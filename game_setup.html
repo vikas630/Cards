@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Setup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h2>Enter Player Names</h2>
+        <div id="playerInputs"></div>
+        <button onclick="startGame()">Start Game</button>
+    </div>
+    <script>
+        window.onload = function () {
+            const rules = JSON.parse(localStorage.getItem("gameRules"));
+            const numPlayers = rules ? rules.numPlayers : 0;
+
+            if (!numPlayers) {
+                alert("Game rules are not set. Returning to setup page.");
+                window.location.href = "index.html";
+                return;
+            }
+
+            // Generate input fields for player names
+            const playerInputs = document.getElementById("playerInputs");
+            for (let i = 0; i < numPlayers; i++) {
+                playerInputs.innerHTML += `<input type="text" id="player-${i}" placeholder="Player ${i + 1} Name"><br>`;
+            }
+        };
+
+        function startGame() {
+            const rules = JSON.parse(localStorage.getItem("gameRules"));
+            const numPlayers = rules.numPlayers;
+            const players = [];
+
+            for (let i = 0; i < numPlayers; i++) {
+                const name = document.getElementById(`player-${i}`).value.trim();
+                if (!name) {
+                    alert(`Player ${i + 1} name is required.`);
+                    return;
+                }
+                players.push(name);
+            }
+
+            // Save player names to localStorage
+            localStorage.setItem("players", JSON.stringify(players));
+
+            // Redirect to the game page
+            window.location.href = "game_play.html";
+        }
+    </script>
+</body>
+</html>

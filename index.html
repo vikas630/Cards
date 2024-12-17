@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Setup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h2>Game Rules Setup</h2>
+        <form>
+            <label>Total Points:</label>
+            <input type="number" id="totalPoints" min="1" required><br>
+
+            <label>Drop Points:</label>
+            <input type="number" id="dropPoints" min="1" required><br>
+
+            <label>Mid Drop Points:</label>
+            <input type="number" id="midDropPoints" min="1" required><br>
+
+            <label>Full Count Points:</label>
+            <input type="number" id="fullCountPoints" min="1" required><br>
+
+            <label>Number of Players:</label>
+            <input type="number" id="numPlayers" min="2" required><br>
+
+            <button type="button" onclick="proceedToPlayerSetup()">Next</button>
+        </form>
+    </div>
+    <script>
+        function proceedToPlayerSetup() {
+            // Get all inputs
+            const totalPoints = document.getElementById("totalPoints").value;
+            const dropPoints = document.getElementById("dropPoints").value;
+            const midDropPoints = document.getElementById("midDropPoints").value;
+            const fullCountPoints = document.getElementById("fullCountPoints").value;
+            const numPlayers = document.getElementById("numPlayers").value;
+
+            // Validate inputs
+            if (!totalPoints || !dropPoints || !midDropPoints || !fullCountPoints || numPlayers < 2) {
+                alert("Please fill in all fields correctly!");
+                return;
+            }
+
+            // Save game rules to localStorage
+            localStorage.setItem("gameRules", JSON.stringify({
+                totalPoints: Number(totalPoints),
+                dropPoints: Number(dropPoints),
+                midDropPoints: Number(midDropPoints),
+                fullCountPoints: Number(fullCountPoints),
+                numPlayers: Number(numPlayers)
+            }));
+
+            // Redirect to the player setup page
+            window.location.href = "game_setup.html";
+        }
+    </script>
+</body>
+</html>

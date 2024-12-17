@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Play</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <h2>Game Play</h2>
+        <h3>Round <span id="roundNumber">1</span></h3>
+        <table id="scoreTable" border="1"></table>
+        <button onclick="nextRound()">Next Round</button>
+
+        <div id="widgets">
+            <h3>Widgets</h3>
+            <label>Select Player:</label>
+            <select id="playerSelector"></select>
+            <button onclick="applyPoints('show')">Show = 0</button>
+            <button onclick="applyPoints('drop')">Drop</button>
+            <button onclick="applyPoints('midDrop')">Mid Drop</button>
+            <button onclick="applyPoints('fullCount')">Full Count</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -50,11 +50,11 @@ function validateScore(round, playerIndex) {
     const score = Number(input.value);
 
     if (score > rules.fullCountPoints) {
-        input.value = 0; // Temporarily reset the input
+        input.value = 0; // Temporarily reset input to 0
         showCenteredPopup(
             "Score Exceeded!",
             `Assign Full Count (${rules.fullCountPoints}) points?`,
-            () => assignFullCountPoints(round, playerIndex) // Assign points on "Yes"
+            () => assignFullCountPoints(round, playerIndex)
         );
     } else {
         updateTotals();
@@ -63,10 +63,8 @@ function validateScore(round, playerIndex) {
 
 function assignFullCountPoints(round, playerIndex) {
     const input = document.getElementById(`score-${round}-${playerIndex}`);
-    if (input) {
-        input.value = rules.fullCountPoints; // Assign full count points
-        updateTotals(); // Update totals after assigning
-    }
+    input.value = rules.fullCountPoints; // Assign full count points
+    updateTotals(); // Update totals dynamically
 }
 
 function applyPoints(type) {
@@ -135,12 +133,13 @@ function highlightScores() {
     players.forEach((_, index) => {
         const cell = document.getElementById(`total-${index}`);
         if (cell) {
-            cell.classList.remove("green", "red");
+            cell.classList.remove("red", "green"); // Remove any existing classes first
             if (totals[index] === max && !eliminatedPlayers[index]) cell.classList.add("red");
             if (totals[index] === min && !eliminatedPlayers[index]) cell.classList.add("green");
         }
     });
 }
+
 
 function nextRound() {
     round++;

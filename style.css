@@ -1,20 +1,128 @@
+/* General Reset */
 body, html {
-    margin: 0; padding: 0; height: 100%; font-family: Arial, sans-serif; text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-image: url('background.jpg'); /* Replace with your background image path */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.background {
-    position: fixed; width: 100%; height: 100%; background: url('background.jpg') center/cover no-repeat; opacity: 0.3; z-index: -1;
+/* Centered Container for Content */
+.container {
+    background: rgba(158, 155, 155, 0.9); /* Light transparent background */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    box-sizing: border-box;
 }
 
-.container { margin-top: 50px; }
-button { padding: 10px 20px; margin: 5px; cursor: pointer; }
-input { margin: 5px; padding: 5px; }
-
+/* Game Table Styling */
 table {
-    margin: 20px auto; border-collapse: collapse; width: 90%;
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
 }
+
 th, td {
-    border: 1px solid #ddd; padding: 10px; text-align: center;
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
 }
-.green { background-color: #90EE90; }
-.red { background-color: #FF6347; }
+
+th {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+}
+
+td input {
+    width: 80%;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Buttons Styling */
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Widgets Section */
+#widgets {
+    margin: 20px 0;
+}
+
+select {
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Popup Styling */
+#popup {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+}
+/* Highlighting Highest and Lowest Scores */
+.red {
+    background-color: #FF6347 !important; /* Tomato Red for highest scorer */
+    color: white !important;
+    font-weight: bold;
+}
+
+.green {
+    background-color: #32CD32 !important; /* Lime Green for lowest scorer */
+    color: white !important;
+    font-weight: bold;
+}
+
+
+/* Responsive View for Mobile */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    td input {
+        width: 95%;
+    }
+}
